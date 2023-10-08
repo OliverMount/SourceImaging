@@ -119,21 +119,16 @@ Convert the raw DICOM T1/T2 data to NIfTI format and relocate them to the NIfTI 
 
 ### II.  MNE  head model construction (Subsequent Steps)
 
-11. **Setting up source space (creating the dipole sources locations on the midgray surface):**
-- This step specifies how many dipole sources needed. It results in the location of the sources in the midgray surface. 
-12. **Setting up head-model parameters**
-- Create a model using BEM surfaces and dipole information, specifying scalp, skull, and brain conductivities (0.33, 0.025, and 0.33, respectively).
-13. **Making high-resolution scalp surface:**
-- This step creates high resolution scalp (with no holes; if there is a hole we need to fill it up; fortunately for the freesurfer version 7.3.2 we use now (2023), we have not encountered this problem).
-14. **Final head-model**
--The final head model is available as a .fif file, which can be imported into MATLAB for inverse processing. For example, the head model for ibs0001 is found in the bem folder of the SUBJECTS_DIR with the name ibs0001_fs-head.fif.
+11. **Setting up source space (creating the dipole sources locations on the midgray surface):** This step specifies how many dipole sources needed. It results in the location of the sources in the midgray surface. 
+12. **Setting up head-model parameters:** Create a model using BEM surfaces and dipole information, specifying scalp, skull, and brain conductivities (0.33, 0.025, and 0.33, respectively).
+13. **Making high-resolution scalp surface:** This step creates high resolution scalp (with no holes; if there is a hole we need to fill it up; fortunately for the freesurfer version 7.3.2 we use now (2023), we have not encountered this problem).
+14. **Final head-model:** The final head model is available as a .fif file, which can be imported into MATLAB for inverse processing. For example, the head model for ibs0001 is found in the bem folder of the SUBJECTS_DIR with the name ibs0001_fs-head.fif.
 
 ### III.  MNE and MATLAB-based inverse matrix   
 
-15. **Marking the MRI fiducials (manually)**
-- Create a VAnatomy.dat file within the NIfTI folder. Using the MATLAB script vAnatomyFiducials.m (Sperotoolbox), mark the left, right preauricular, and nasion points, and save them as a text file (e.g., ibs0001_fiducials.txt) inside the bem folder.
-16. **Inverse matrix**
-Before determining the inverse matrix, ensure the following:
+15. **Marking the MRI fiducials (manually):** Create a VAnatomy.dat file within the NIfTI folder. Using the MATLAB script vAnatomyFiducials.m (Sperotoolbox), mark the left, right preauricular, and nasion points, and save them as a text file (e.g., ibs0001_fiducials.txt) inside the bem folder.
+
+16. **Inverse matrix:** Before determining the inverse matrix, ensure the following:
 
 a. Move the EEG epoched files to a directory named 4D. The directory structure of 4D should resemble the following:
 ```
@@ -166,6 +161,7 @@ c. Check the alignment of fiducials and digitized points on the high-resolution 
 d. Compute the inverse solution by executing the **prepareInversesForMrc.m** script from the alesToolbox. Provide the FreeSurfer path as input. The resulting inverse will be saved in the FreeSurfer BEM directory, for example, as ibs0001-inv.fif.
 
 18. **Default Cortex and associated ROIs**
-- To obtain the defaultCortex.mat, run the **FS4toDefaultCortex.m** script with the argument (subject_folder, true). Save this file in the anatomy folder. The subject_folder represents the FreeSurfer subject folder.
 
-- Execute the **FS4parc2cortex.m** script with the argument (subject_folder). Choose the FreeSurfer participant folder and select the defaultCortex.mat file. From the menu, select the "../Standard/meshes/ROIs/" directory. This action will save the 84 ROI source waveforms in this directory.
+a. To obtain the defaultCortex.mat, run the **FS4toDefaultCortex.m** script with the argument (subject_folder, true). Save this file in the anatomy folder. The subject_folder represents the FreeSurfer subject folder.
+
+b. Execute the **FS4parc2cortex.m** script with the argument (subject_folder). Choose the FreeSurfer participant folder and select the defaultCortex.mat file. From the menu, select the "../Standard/meshes/ROIs/" directory. This action will save the 84 ROI source waveforms in this directory.
