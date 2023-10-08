@@ -3,9 +3,11 @@
 This repository provdies a bash script for batch preprocessing of
 
 A.  T1/T2 MRI data using a mix of commands from  [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki), [Freesurfer](https://surfer.nmr.mgh.harvard.edu) and [AFNI](https://afni.nimh.nih.gov)   [10  essential steps]
+
 B.  Building headmodels (aka. forward matrix; lead-field matrix) for the EEG source imaging via either using  
 - [MNE tools](https://github.com/mne-tools) or 
 - [Brainstorm](https://neuroimage.usc.edu/brainstorm/)
+
 C.  Finding inverse matrix using either
 -[MNE](https://github.com/mne-tools) and [MATLAB](www.mathworks.com)  or
 -[Brainstorm](https://neuroimage.usc.edu/brainstorm/)
