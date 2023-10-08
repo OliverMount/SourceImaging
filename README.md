@@ -2,11 +2,11 @@
 
 This repository provdies a bash script for batch preprocessing of
 
-I. T1/T2 MRI data using a mix of commands from  [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki), [Freesurfer](https://surfer.nmr.mgh.harvard.edu) and [AFNI](https://afni.nimh.nih.gov)   [10  essential steps]
-II. Building headmodels (aka. forward matrix; lead-field matrix) for the EEG source imaging via either using  
+I.  T1/T2 MRI data using a mix of commands from  [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki), [Freesurfer](https://surfer.nmr.mgh.harvard.edu) and [AFNI](https://afni.nimh.nih.gov)   [10  essential steps]
+II.  Building headmodels (aka. forward matrix; lead-field matrix) for the EEG source imaging via either using  
 - [MNE tools](https://github.com/mne-tools) or 
 - [Brainstorm](https://neuroimage.usc.edu/brainstorm/)
-III. Finding inverse matrix using either
+III.  Finding inverse matrix using either
 -[MNE](https://github.com/mne-tools) and [MATLAB](www.mathworks.com)  or
 -[Brainstorm](https://neuroimage.usc.edu/brainstorm/)
 
@@ -97,7 +97,7 @@ The script also includes functionality to check for previously processed partici
 
 ```
 ## Preprocessing Steps
-### I. Processing of T1/T2 data
+###I.  Processing of T1/T2 data
 0. **Conversion and Data Reorientation** 
 Convert the raw DICOM T1/T2 data to NIfTI format and relocate them to the NIfTI directory. All preprocessing operations proceed with the files in the NIfTI folder, preserving the integrity of the raw files in the RawDicom directory. The volumes are reoriented to the LAS (radiologist-preferred) axes. 
 1. **Brain tissue extraction (BET for T1):**
@@ -117,7 +117,7 @@ Convert the raw DICOM T1/T2 data to NIfTI format and relocate them to the NIfTI 
 - Align the T1 to the MNI152 (1mm) template.
 10. **Creating skull/inskull/outskull in order to make head model (BEM)**
 - These surface files are used for creating the head model (forward matrix).
-### II. MNE  head model construction (Subsequent Steps)
+###II.  MNE  head model construction (Subsequent Steps)
 11. **Setting up source space (creating the dipole sources locations on the midgray surface):**
 - This step specifies how many dipole sources needed. It results in the location of the sources in the midgray surface. 
 12. **Setting up head-model parameters**
@@ -126,7 +126,7 @@ Convert the raw DICOM T1/T2 data to NIfTI format and relocate them to the NIfTI 
 - This step creates high resolution scalp (with no holes; if there is a hole we need to fill it up; fortunately for the freesurfer version 7.3.2 we use now (2023), we have not encountered this problem).
 14. **Final head-model**
 -The final head model is available as a .fif file, which can be imported into MATLAB for inverse processing. For example, the head model for ibs0001 is found in the bem folder of the SUBJECTS_DIR with the name ibs0001_fs-head.fif.
-### III. MNE and MATLAB-based inverse matrix   
+###III.  MNE and MATLAB-based inverse matrix   
 15. **Marking the MRI fiducials (manually)**
 - Create a VAnatomy.dat file within the NIfTI folder. Using the MATLAB script vAnatomyFiducials.m (Sperotoolbox), mark the left, right preauricular, and nasion points, and save them as a text file (e.g., ibs0001_fiducials.txt) inside the bem folder.
 16. **Inverse matrix**
