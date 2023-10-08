@@ -163,4 +163,5 @@ d.Compute the inverse solution by executing the **prepareInversesForMrc.m** scri
 
 18. **Default Cortex and associated ROIs**
 - To obtain the defaultCortex.mat, run the **FS4toDefaultCortex.m** script with the argument (subject_folder, true). Save this file in the anatomy folder. The subject_folder represents the FreeSurfer subject folder.
--Execute the **FS4parc2cortex.m** script with the argument (subject_folder). Choose the FreeSurfer participant folder and select the defaultCortex.mat file. From the menu, select the "../Standard/meshes/ROIs/" directory. This action will save the 84 ROI source waveforms in this directory.
+
+- Execute the **FS4parc2cortex.m** script with the argument (subject_folder). Choose the FreeSurfer participant folder and select the defaultCortex.mat file. From the menu, select the "../Standard/meshes/ROIs/" directory. This action will save the 84 ROI source waveforms in this directory.
