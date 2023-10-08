@@ -4,11 +4,11 @@ This repository provdies a bash script for batch preprocessing of
 
 I.  T1/T2 MRI data using a mix of commands from  [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki), [Freesurfer](https://surfer.nmr.mgh.harvard.edu) and [AFNI](https://afni.nimh.nih.gov)   [10  essential steps]
 
-B.  Building headmodels (aka. forward matrix; lead-field matrix) for the EEG source imaging via either using  
+II.  Building headmodels (aka. forward matrix; lead-field matrix) for the EEG source imaging via either using  
 - [MNE tools](https://github.com/mne-tools) or 
 - [Brainstorm](https://neuroimage.usc.edu/brainstorm/)
 
-C.  Finding inverse matrix using either
+III.  Finding inverse matrix using either
 - [MNE](https://github.com/mne-tools) and [MATLAB](www.mathworks.com)  or
 - [Brainstorm](https://neuroimage.usc.edu/brainstorm/)
 
@@ -46,10 +46,7 @@ Inside the anatomy_path, create a directory for each participant with a name sta
 
 ```
 The HEAD of ibs0001 contains the following raw data directories that would be used for preprocessing.
-
-
 ```
-
 HEAD_PI_CNIR_IBS_20220805_100824_145000
 ├── 64CH_LOCALIZER_0001
 ├── DTI_SMS_64DIR_2_0ISO_0002
@@ -63,11 +60,9 @@ HEAD_PI_CNIR_IBS_20220805_100824_145000
 └── T2_SPACE_SAG_1_0MM_0010
 ```
 
-3. After completing steps 1 and 2, this code initiates the preprocessing process for each participant within your anatomy folder, processing them individually.
-The script also includes functionality to check for previously processed participants based on the availability of processed files. Consequently, the script can be executed sequentially, allowing you to process a few users at a time. This feature enhances the flexibility of the current script.
+3. After completing steps 1 and 2, this code initiates the preprocessing process for each participant within your anatomy folder, processing them individually. The script also includes functionality to check for previously processed participants based on the availability of processed files. Consequently, the script can be executed sequentially, allowing you to process a few users at a time. This feature enhances the flexibility of the current script.
 
-
-4.Upon completion of preprocessing for a participant, the folder structure is organized as follows: the HEAD folder is relocated to the RawDicom directory, and the processed files are stored in the nifti and Standard directories, as illustrated below.
+4. Upon completion of preprocessing for a participant, the folder structure is organized as follows: the HEAD folder is relocated to the RawDicom directory, and the processed files are stored in the nifti and Standard directories, as illustrated below.
 
 ```
 ├── ibs0001
@@ -99,7 +94,9 @@ The script also includes functionality to check for previously processed partici
 
 ```
 ## Preprocessing Steps
-###I.  Processing of T1/T2 data
+
+### I.  Processing of T1/T2 data
+
 0. **Conversion and Data Reorientation** 
 Convert the raw DICOM T1/T2 data to NIfTI format and relocate them to the NIfTI directory. All preprocessing operations proceed with the files in the NIfTI folder, preserving the integrity of the raw files in the RawDicom directory. The volumes are reoriented to the LAS (radiologist-preferred) axes. 
 1. **Brain tissue extraction (BET for T1):**
