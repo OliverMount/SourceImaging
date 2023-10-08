@@ -134,7 +134,8 @@ Convert the raw DICOM T1/T2 data to NIfTI format and relocate them to the NIfTI 
 - Create a VAnatomy.dat file within the NIfTI folder. Using the MATLAB script vAnatomyFiducials.m (Sperotoolbox), mark the left, right preauricular, and nasion points, and save them as a text file (e.g., ibs0001_fiducials.txt) inside the bem folder.
 16. **Inverse matrix**
 Before determining the inverse matrix, ensure the following:
--  Move the EEG epoched files to a directory named 4D. The directory structure of 4D should resemble the following:
+
+a. Move the EEG epoched files to a directory named 4D. The directory structure of 4D should resemble the following:
 ```
 4D2/
 ├── ibs0001
@@ -145,7 +146,9 @@ Before determining the inverse matrix, ensure the following:
     └── Ax002.mat
 ```
 Each mat file represents a unique experimental condition.
+
 b. Create the noise covariance matrix using the mrCurrent toolbox. The resulting directory structure will resemble the following:
+
 ```
 4D2/
 ├── ibs0001
@@ -157,9 +160,10 @@ b. Create the noise covariance matrix using the mrCurrent toolbox. The resulting
     ├── Ax002.mat
     └── noise_covar.mat
 ```
+
 c. Check the alignment of fiducials and digitized points on the high-resolution scalp. Utilize the **prepareProjectForMne.m** script from the  [alesToolbox](https://github.com/svndl/svndl_code/tree/b1b90b64451832996cc0108421fb0c4be5fe1328/alesToolbox) for MATLAB. Provide the FreeSurfer directory and the path to the 4D2 data as inputs. This script will display the fiducials (EEG and MRI) and digitized points on the scalp. If necessary, edit the elp file to align the points accurately with the scalp.
 
-d.Compute the inverse solution by executing the **prepareInversesForMrc.m** script from the alesToolbox. Provide the FreeSurfer path as input. The resulting inverse will be saved in the FreeSurfer BEM directory, for example, as ibs0001-inv.fif.
+d. Compute the inverse solution by executing the **prepareInversesForMrc.m** script from the alesToolbox. Provide the FreeSurfer path as input. The resulting inverse will be saved in the FreeSurfer BEM directory, for example, as ibs0001-inv.fif.
 
 18. **Default Cortex and associated ROIs**
 - To obtain the defaultCortex.mat, run the **FS4toDefaultCortex.m** script with the argument (subject_folder, true). Save this file in the anatomy folder. The subject_folder represents the FreeSurfer subject folder.
