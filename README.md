@@ -100,23 +100,25 @@ HEAD_PI_CNIR_IBS_20220805_100824_145000
 0. **Conversion and Data Reorientation** 
 Convert the raw DICOM T1/T2 data to NIfTI format and relocate them to the NIfTI directory. All preprocessing operations proceed with the files in the NIfTI folder, preserving the integrity of the raw files in the RawDicom directory. The volumes are reoriented to the LAS (radiologist-preferred) axes. 
 1. **Brain tissue extraction (BET for T1):**
-- This procedure removes non-brain regions to prepare the data for analysis. 
+ This procedure removes non-brain regions to prepare the data for analysis. 
 2. **The recon-all (Segmentation, surface files and atlas projection for left and right hemisphere seperately):**
-- Utilize recon-all from FreeSurfer to perform segmentation, surface file generation, and atlas projection for both the left and right hemispheres separately. Note that this step may require considerable processing time, approximately 5 hours on the heterobrainX workstation, with variations depending on computer specifications. It's important to mention that recon-all results will not be stored in the NIfTI folder; instead, they will reside in the SUBJECTS_DIR of FreeSurfer. We maintain the recon results separately to track files processed by FSL and FreeSurfer.
+ Utilize recon-all from FreeSurfer to perform segmentation, surface file generation, and atlas projection for both the left and right hemispheres separately. Note that this step may require considerable processing time, approximately 5 hours on the heterobrainX workstation, with variations depending on computer specifications. It's important to mention that recon-all results will not be stored in the NIfTI folder; instead, they will reside in the SUBJECTS_DIR of FreeSurfer. We maintain the recon results separately to track files processed by FSL and FreeSurfer.
 3. **Transfer Recon Output Files to NIfTI Directory**
-- Since Step 2 does not save results in NIfTI format, preprocessed T1 files are moved to the NIfTI folder with the _fs suffix to indicate files processed by FreeSurfer.
+ Since Step 2 does not save results in NIfTI format, preprocessed T1 files are moved to the NIfTI folder with the _fs suffix to indicate files processed by FreeSurfer.
 4. **BET for T2:**
 5. **Segmentation for T2 :**
-- T2 segmentation (CSF/WM/GM) is perfomed via fsl (fast).
+ T2 segmentation (CSF/WM/GM) is perfomed via fsl (fast).
 6. **Bias Correction for T2:**
 7. **Registration (affine) of T2 onto T1:**
 8. **Outer skull mesh generation for T2:**
-- The mesh file is required for the Boundary Element Model (BEM) in Step 10.
+ The mesh file is required for the Boundary Element Model (BEM) in Step 10.
 9. **Normalization of MNI:**
-- Align the T1 to the MNI152 (1mm) template.
+ Align the T1 to the MNI152 (1mm) template.
 10. **Creating skull/inskull/outskull in order to make head model (BEM)**
-- These surface files are used for creating the head model (forward matrix).
-###II.  MNE  head model construction (Subsequent Steps)
+ These surface files are used for creating the head model (forward matrix).
+
+### II.  MNE  head model construction (Subsequent Steps)
+
 11. **Setting up source space (creating the dipole sources locations on the midgray surface):**
 - This step specifies how many dipole sources needed. It results in the location of the sources in the midgray surface. 
 12. **Setting up head-model parameters**
@@ -125,7 +127,9 @@ Convert the raw DICOM T1/T2 data to NIfTI format and relocate them to the NIfTI 
 - This step creates high resolution scalp (with no holes; if there is a hole we need to fill it up; fortunately for the freesurfer version 7.3.2 we use now (2023), we have not encountered this problem).
 14. **Final head-model**
 -The final head model is available as a .fif file, which can be imported into MATLAB for inverse processing. For example, the head model for ibs0001 is found in the bem folder of the SUBJECTS_DIR with the name ibs0001_fs-head.fif.
-###III.  MNE and MATLAB-based inverse matrix   
+
+### III.  MNE and MATLAB-based inverse matrix   
+
 15. **Marking the MRI fiducials (manually)**
 - Create a VAnatomy.dat file within the NIfTI folder. Using the MATLAB script vAnatomyFiducials.m (Sperotoolbox), mark the left, right preauricular, and nasion points, and save them as a text file (e.g., ibs0001_fiducials.txt) inside the bem folder.
 16. **Inverse matrix**
