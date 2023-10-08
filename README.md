@@ -35,7 +35,7 @@ Inside the anatomy_path, create a directory for each participant with a name sta
 └── ibs0025
 ```
 
-3. Inside each ibsxxx directory, place a directory that contains raw data. For example, MRI scans from SKKU contained in a single directory that starts with the name HEAD. The HEAD directory contains raw data directories (T1/T2/DTI files). Place the HEAD directory inside the ibsXXXX directories, as shown for ibs0001 and ibs0002 below.
+3. Inside each ibsxxx directory, place a directory that contains raw data. For example, MRI scans from SKKU contained in a single directory that starts with the name HEAD. The HEAD directory contains raw data directories (T1/T2/DTI files). Place the HEAD directory inside the ibsxxxx directories, as shown for ibs0001 and ibs0002 below.
 
 ```
 .
@@ -102,9 +102,10 @@ Convert the raw DICOM T1/T2 data to NIfTI format and relocate them to the NIfTI 
 1. **Brain tissue extraction (BET for T1):**
  This procedure removes non-brain regions to prepare the data for analysis. 
 2. **The recon-all (Segmentation, surface files and atlas projection for left and right hemisphere seperately):**
- Utilize recon-all from FreeSurfer to perform segmentation, surface file generation, and atlas projection for both the left and right hemispheres separately. Note that this step may require considerable processing time, approximately 5 hours on the heterobrainX workstation, with variations depending on computer specifications. It's important to mention that recon-all results will not be stored in the NIfTI folder; instead, they will reside in the SUBJECTS_DIR of FreeSurfer. We maintain the recon results separately to track files processed by FSL and FreeSurfer.
+ Utilize recon-all from FreeSurfer to perform segmentation, surface file generation, and atlas projection for both the left and right hemispheres separately. Note that this step may require considerable processing time, approximately 5 hours on the heterobrainX workstation, with variations depending on computer specifications. It's important to mention that recon-all results will not be stored in the NIfTI folder; instead, they will reside in the `SUBJECTS_DIR` of FreeSurfer. We maintain the recon results separately to track files processed by FSL and FreeSurfer.
 3. **Transfer Recon Output Files to NIfTI Directory**
- Since Step 2 does not save results in NIfTI format, preprocessed T1 files are moved to the NIfTI folder with the _fs suffix to indicate files processed by FreeSurfer.
+ Since Step 2 does not save results in NIfTI format, preprocessed T1 files are moved to the NIfTI folder with the `_fs` suffix to indicate files processed by FreeSurfer.
+
 4. **BET for T2:**
 5. **Segmentation for T2 :**
  T2 segmentation (CSF/WM/GM) is perfomed via fsl (fast).
