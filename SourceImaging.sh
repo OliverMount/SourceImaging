@@ -1,5 +1,26 @@
+#!/bin/bash
+#
 # Bash script for preprocessing of T1 and T2 anatomical images and headmodel construction using MNE
- 
+#
+# Author: Oliver James
+# Version: 1.0
+# Date: October 8, 2023
+#
+# Description:
+# This script automates the preprocessing of T1 and T2 anatomical images and headmodel construction using MNE.
+# It performs various steps including data conversion, brain extraction (BET), alignment to standard templates,
+# skull and headmodel creation, and more. Ensure that you have the necessary software dependencies installed and
+# that the paths are correctly configured before running this script.
+#
+# Usage: ./preprocess_anatomy.sh
+#
+# Disclaimer: Use this script at your own risk. It is provided as-is and may require adjustments for your specific
+# environment. Consult the documentation or the author (Oliver James) for additional assistance.
+#
+# Suggestions and contributions are welcome!
+#
+#----------------------------------------------------------
+# Bash script for preprocessing of T1 and T2 anatomical images and headmodel construction using MNE
 # Make sure the following path settings are correct in your system
 
 anatomy_path="/Users/heterobrainx/anatomy"
