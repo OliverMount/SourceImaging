@@ -390,7 +390,7 @@ do
 	fi
 
 	########################################################
-	# Step 14:  Setting up source space   
+	# Step 14:  Making BEM surface that results in head-model  
 	########################################################
 	# 4 for outer skin (head) surface 3 for outer skull surface 1 for inner skull surface 
 	if [ ! -f ${sub}_fs-head.fif ]; then  # The final file
