@@ -378,7 +378,7 @@ do
 	fi
 	
 	########################################################
-	# Step 13:  Setting up source space   
+	# Step 13:  Making high resolution scalp   
 	########################################################
 	cd $SUBJECTS_DIR/${sub}_fs/bem   # Back to bem directory of the participant
 	if [[ ! -f ../mri/seghead.mgz  && ! -f ../surf/lh.seghead ]]; then
@@ -394,10 +394,10 @@ do
 	########################################################
 	# 4 for outer skin (head) surface 3 for outer skull surface 1 for inner skull surface 
 	if [ ! -f ${sub}_fs-head.fif ]; then  # The final file
-		echo "++ Beginning  the final MNE step"
+		echo "++ Making BEM surface using segmented head"
 		mne_surf2bem --surf ../surf/lh.seghead --id 4 --check --fif ${sub}_fs-head.fif
 	else
-		echo "++ Done with the final MNE step for this participant"
+		echo "++ Already done with the BEM surface for this participant"
 	fi
 
 	############################################################
