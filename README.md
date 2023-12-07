@@ -14,7 +14,7 @@ III.  Finding inverse matrix using either
 
 This repository discusses MNE tools-based head models and MNE, MATLAB tools for inverse matrix computations. For Brainstorm-based head models and inverse, please see the repository https://github.com/OliverMount/SourceImaging_Brainstorm.
 
-In the IBS heterobrainx workstation, all the necessary software is installed, and preprocessing would begin smoothly and would take nearly 6 hours for each participant for both the steps.
+In the IBS heterobrainx workstation, all the necessary software is installed, and preprocessing would begin smoothly and would take nearly 6 hours for each participant for steps I and II.
 
 ## Check list
 
