@@ -1,3 +1,11 @@
+<!-- badges: start -->  
+![version](https://badgen.net/badge/version/1.0/green)
+![Languages](https://badgen.net/badge/Script/Bash/green)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+<!-- badges: end -->
+
+
 # Preprocessing of T1/T2 data for EEG Source Imaging 
 
 This repository provdies a bash script for batch preprocessing of
